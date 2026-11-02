@@ -40,6 +40,11 @@
     return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   }
 
+  // Gmail keeps several div[role="main"]; use the visible one
+  function visibleMain() {
+    return Array.from(document.querySelectorAll('div[role="main"]')).find(m => m.offsetParent !== null) || null;
+  }
+
   function buildBanner(analysis, isTrusted, mlLine, mlProb) {
     const t = i18n.t;
     const banner = document.createElement('div');
@@ -83,7 +88,7 @@
     if (analysis.mlAvailable) {
       const ml = document.createElement('div');
       ml.className = 'gpg-row gpg-ml';
-      ml.innerHTML = `<strong>ML score</strong> ${analysis.mlScore}/100 &nbsp; <span class="small">${mlLine || ''}</span>`;
+      ml.innerHTML = `<strong>${escapeHtml(t('banner.mlScore'))}</strong> ${analysis.mlScore}/100 &nbsp; <span class="small">${escapeHtml(mlLine || '')}</span>`;
       details.appendChild(ml);
     }
 
@@ -95,7 +100,7 @@
       for (const f of sorted) {
         const row = document.createElement('div');
         row.className = 'gpg-row';
-        row.innerHTML = `<strong>${escapeHtml(f.label)}</strong> <span class="gpg-weight">+${f.weight}</span><br><span class="gpg-ev">${escapeHtml(f.evidence || '')}</span>`;
+        row.innerHTML = `<strong>${escapeHtml(i18n.label(f.label))}</strong> <span class="gpg-weight">+${f.weight}</span><br><span class="gpg-ev">${escapeHtml(f.evidence || '')}</span>`;
         details.appendChild(row);
       }
     }
@@ -103,7 +108,7 @@
     if (analysis.external && analysis.external.length) {
       const h = document.createElement('div');
       h.className = 'gpg-row gpg-heading';
-      h.textContent = 'External threat intelligence';
+      h.textContent = t('banner.external');
       details.appendChild(h);
       for (const p of analysis.external) {
         const row = document.createElement('div');
@@ -116,7 +121,7 @@
     if (analysis.rulesVersion) {
       const meta = document.createElement('div');
       meta.className = 'gpg-meta';
-      meta.textContent = `Rules v${analysis.rulesVersion} · local analysis`;
+      meta.textContent = `${t('banner.rules')} v${analysis.rulesVersion} · ${t('banner.localAnalysis')}`;
       details.appendChild(meta);
     }
 
@@ -125,7 +130,7 @@
   }
 
   function renderBanner(analysis, isTrusted, mlLine, mlProb) {
-    const main = STATE.site?.extract?.()?.mainEl || document.querySelector('div[role="main"]') || document.body;
+    const main = STATE.site?.extract?.()?.mainEl || visibleMain() || document.body;
     if (!main) return;
     const existing = document.querySelector('.gpg-banner');
     if (existing) existing.remove();
@@ -139,12 +144,14 @@
   }
 
   async function runAllChecks(data, rules) {
-    // HTML forensics
+    // HTML forensics — only on the email body, never on the whole mail page
     let htmlFindings = [], qrFindings = [], visualFindings = [], senderFindings = [], threadFindings = [];
 
-    try { htmlFindings = NS.htmlForensics.analyzeHtml(data.bodyEl || document.body, rules).findings; } catch (e) { logger.warn(e); }
-    try { qrFindings = NS.qr.analyzeQrImages(data.bodyEl || document.body, rules).findings; } catch (e) { logger.warn(e); }
-    try { const vs = await NS.visualSimilarity.analyzeImages(data.bodyEl || document.body, rules); visualFindings = vs.findings; } catch (e) { logger.warn(e); }
+    if (data.bodyEl) {
+      try { htmlFindings = NS.htmlForensics.analyzeHtml(data.bodyEl, rules).findings; } catch (e) { logger.warn(e); }
+      try { qrFindings = NS.qr.analyzeQrImages(data.bodyEl, rules).findings; } catch (e) { logger.warn(e); }
+      try { const vs = await NS.visualSimilarity.analyzeImages(data.bodyEl, rules); visualFindings = vs.findings; } catch (e) { logger.warn(e); }
+    }
     try { const sr = await NS.senderReputation.check(data.senderEmail, rules); senderFindings = sr.findings; } catch (e) { logger.warn(e); }
     try {
       const messages = STATE.site?.collectMessages?.() || [];
@@ -180,7 +187,13 @@
   async function analyzeAndDisplay() {
     if (STATE.analyzing) return;
     const data = STATE.site.extract();
-    if (!data) { STATE.lastHash = null; return; }
+    if (!data) {
+      // No email open (inbox list) — clear the old banner and result
+      STATE.lastHash = null;
+      STATE.lastAnalysis = null;
+      if (STATE.bannerEl) { STATE.bannerEl.remove(); STATE.bannerEl = null; }
+      return;
+    }
 
     const h = hashEmail(data);
     const bannerAlive = STATE.bannerEl && STATE.bannerEl.isConnected;
