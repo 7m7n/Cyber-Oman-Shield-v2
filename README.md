@@ -371,6 +371,7 @@ This tool is built for **education, research and defensive security**. It assist
 Originally developed as a graduation project (CyberOMANShield 2040), v2 extends it into a cross-browser extension.
 
 v2 Developed by : M.Alfahdi 
+
 🤝 Special thanks to A.Alzadjali for his contribution of the amendments and suggestions.
 ---
 
