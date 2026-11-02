@@ -362,7 +362,10 @@ This tool is built for **education, research and defensive security**. It assist
 
 ---
 
-## 
+## Screenshot
+![image alt](https://github.com/7m7n/Cyber-Oman-Shield-v2/blob/0f1987f9bf224b811cece4cce1839a2b652b8b86/Cyber%20OMAN%20Shield%20V1%20vs%20V2.png)
+![image alt](https://github.com/7m7n/Cyber-Oman-Shield-v2/blob/0f1987f9bf224b811cece4cce1839a2b652b8b86/photo-output.jpeg)
+![image alt](https://github.com/7m7n/Cyber-Oman-Shield-v2/blob/0f1987f9bf224b811cece4cce1839a2b652b8b86/photo-output.png)
 
 
 Originally developed as a graduation project (CyberOMANShield 2040), v2 extends it into a cross-browser extension.
