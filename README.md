@@ -372,7 +372,7 @@ Originally developed as a graduation project (CyberOMANShield 2040), v2 extends 
 
 v2 Developed by : M.Alfahdi 
 
-🤝 Special thanks to A.Alzadjali for his contribution of the amendments and suggestions.
+🤝 Special thanks to A.Alzadjali for her contribution of the amendments and suggestions.
 ---
 
 ## 📄 License
