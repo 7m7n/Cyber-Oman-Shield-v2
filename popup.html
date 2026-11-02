@@ -8,35 +8,38 @@
 </head>
 <body>
   <div class="popup">
-    <div class="row"><strong id="title">Cyber OMAN Shield 2040 v2</strong></div>
-    <div class="row"><strong id="subject">(Open a message)</strong></div>
+    <div class="row"><strong id="title" data-i18n="popup.title">Cyber OMAN Shield 2040 v2</strong></div>
+    <div class="row"><strong id="subject" data-i18n="popup.openMessage">(Open a message)</strong></div>
     <div class="row" id="scoreRow">
       <span id="tier" class="tier-badge safe">Safe</span>
-      <span class="small">Score: <strong id="score">—</strong>/100</span>
+      <span class="small"><span data-i18n="popup.score">Score</span>: <strong id="score">—</strong>/100</span>
       <span id="mlBadge" class="small"></span>
     </div>
     <div class="row small" id="sender"></div>
     <div class="row small" id="explain"></div>
     <div class="row"><div id="findings" class="findings"></div></div>
     <div class="row" id="threadRow" style="display:none;">
-      <button id="threadToggle" class="button small">Thread timeline</button>
+      <button id="threadToggle" class="button small" data-i18n="popup.threadTimeline">Thread timeline</button>
       <div id="threadTimeline" class="findings" style="display:none; margin-top:6px;"></div>
     </div>
     <div class="row">
-      <button id="report" class="button">Report</button>
-      <button id="sandbox" class="button">Sandbox</button>
-      <button id="trust" class="button">Trust</button>
-      <button id="demo" class="button">Demo</button>
-      <button id="settings" class="button">Settings</button>
-      <button id="dashboard" class="button">Dashboard</button>
+      <button id="report" class="button" data-i18n="popup.report">Report</button>
+      <button id="sandbox" class="button" data-i18n="popup.sandbox">Sandbox</button>
+      <button id="trust" class="button" data-i18n="popup.trust">Trust</button>
+      <button id="demo" class="button" data-i18n="popup.demo">Demo</button>
+      <button id="settings" class="button" data-i18n="popup.settings">Settings</button>
+      <button id="dashboard" class="button" data-i18n="popup.dashboard">Dashboard</button>
     </div>
     <div class="row small">
-      <button id="checkHeaders" class="button small">Paste headers</button>
-      <a href="https://support.google.com/mail/answer/8253" target="_blank">Report in provider</a>
+      <button id="checkHeaders" class="button small" data-i18n="popup.pasteHeaders">Paste headers</button>
+      <a href="https://support.google.com/mail/answer/8253" target="_blank" data-i18n="popup.reportProvider">Report in provider</a>
     </div>
-    <textarea id="headersBox" placeholder="Paste raw headers here (Show original → copy)" style="display:none;width:100%;height:80px;"></textarea>
+    <textarea id="headersBox" data-i18n-placeholder="popup.headersPlaceholder" placeholder="Paste raw headers here (Show original → copy)" style="display:none;width:100%;height:80px;"></textarea>
     <div id="headerResult" class="small"></div>
   </div>
+  <script src="lib/logger.js"></script>
+  <script src="lib/storage.js"></script>
+  <script src="lib/i18n.js"></script>
   <script src="popup.js"></script>
 </body>
 </html>
