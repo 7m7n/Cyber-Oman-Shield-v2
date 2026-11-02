@@ -70,5 +70,30 @@
   "dashboard.senders": "Top senders",
   "dashboard.export": "Export CSV",
   "dashboard.clear": "Clear history",
-  "dashboard.empty": "No history yet."
+  "dashboard.empty": "No history yet.",
+  "banner.external": "External threat intelligence",
+  "banner.mlScore": "ML score",
+  "banner.localAnalysis": "local analysis",
+  "banner.rules": "Rules",
+  "popup.sandbox": "Sandbox",
+  "popup.pasteHeaders": "Paste headers",
+  "popup.reportProvider": "Report in provider",
+  "popup.threadTimeline": "Thread timeline",
+  "popup.headersPlaceholder": "Paste raw headers here (Show original → copy)",
+  "popup.from": "From",
+  "popup.external": "External",
+  "popup.noSubject": "(No subject)",
+  "popup.openMessage": "(Open a message)",
+  "popup.explain.dangerous": "Multiple phishing indicators detected.",
+  "popup.explain.suspicious": "Some suspicious indicators.",
+  "popup.explain.trusted": "Sender is trusted.",
+  "popup.explain.none": "No strong indicators.",
+  "popup.openFirst": "Open a mail thread first.",
+  "popup.sandboxPrompt": "URL to open in sandbox (incognito):",
+  "popup.sandboxFailed": "Sandbox failed:",
+  "popup.message": "Message",
+  "labels": {
+    "كلمة مشبوهة": "Suspicious keyword",
+    "لغة الاستعجال": "Urgency language"
+  }
 }
