@@ -1,0 +1,16 @@
+{
+  "name": "cyber-oman-shield-2040",
+  "version": "3.0.0",
+  "description": "Real-time phishing detection extension for Gmail, Outlook, and Yahoo Mail.",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/",
+    "lint": "eslint . --ext .js",
+    "format": "prettier --write \"**/*.{js,json,md,css,html}\"",
+    "build:firefox": "cp manifest.firefox.json manifest.json && echo 'Firefox manifest active'"
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "prettier": "^3.3.0"
+  }
+}

@@ -1,0 +1,66 @@
+/* Banner */
+.gpg-banner { position: sticky; top: 0; z-index: 9999; display: flex; flex-direction: column; gap: 6px; padding: 10px 14px; border-radius: 8px; margin: 8px 12px; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; font-size: 0.95rem; line-height: 1.4; }
+.gpg-banner.safe       { background: #e7f7ec; color: #0b5d1e; border: 1px solid #bfe6cc; }
+.gpg-banner.suspicious { background: #fff6e0; color: #7a5200; border: 1px solid #ffe0a3; }
+.gpg-banner.dangerous  { background: #ffeceb; color: #7a0711; border: 1px solid #ffc1be; }
+.gpg-banner.trusted    { background: #eef2ff; color: #1e2a78; border: 1px solid #c7cffb; }
+.gpg-head { display: flex; align-items: center; gap: 10px; }
+.gpg-icon { font-size: 1.1rem; }
+.gpg-title { font-weight: 700; flex: 1; }
+.gpg-toggle { border: 1px solid rgba(0,0,0,0.15); background: rgba(255,255,255,0.6); border-radius: 6px; padding: 2px 8px; cursor: pointer; font-size: 0.85rem; }
+.gpg-advice { opacity: 0.85; font-size: 0.9rem; }
+.gpg-details { display: none; margin-top: 6px; border-top: 1px dashed rgba(0,0,0,0.15); padding-top: 6px; }
+.gpg-banner.expanded .gpg-details { display: block; }
+.gpg-row { padding: 4px 0; font-size: 0.88rem; }
+.gpg-heading { font-weight: 700; margin-top: 6px; text-transform: uppercase; font-size: 0.75rem; opacity: 0.8; }
+.gpg-weight { color: #b00020; font-weight: 700; }
+.gpg-ev { opacity: 0.8; word-break: break-all; }
+.gpg-meta { margin-top: 6px; font-size: 0.75rem; opacity: 0.7; }
+.gpg-verdict.malicious { color: #b00020; font-weight: 700; }
+.gpg-verdict.clean { color: #0b5d1e; font-weight: 700; }
+
+/* Hover link tooltip */
+.gpg-link-tip { position: fixed; max-width: 320px; background: #111; color: #fff; padding: 6px 10px; font-size: 0.8rem; border-radius: 6px; pointer-events: none; z-index: 2147483647; word-break: break-all; display: none; }
+.gpg-link-tip.bad { background: #8b0000; }
+.gpg-link-tip.good { background: #113a1a; }
+
+/* Popup + Options shared */
+body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; margin: 0; color: #111; }
+body.dark { background: #1a1a1a; color: #eee; }
+body.dark .button { background: #2a2a2a; color: #eee; border-color: #444; }
+body.dark input[type="text"], body.dark input[type="number"], body.dark input[type="password"], body.dark select { background: #222; color: #eee; border-color: #444; }
+body.dark .findings { border-color: #333; }
+body.dark .findings .item { border-color: #2a2a2a; }
+
+.popup { width: 360px; padding: 14px; }
+.row { margin-bottom: 10px; }
+.small { opacity: 0.8; font-size: 12px; }
+.button { padding: 8px 10px; border: 1px solid #ddd; border-radius: 6px; cursor: pointer; background: #fff; color: inherit; }
+.button:hover { background: #f0f0f0; }
+.button.small { padding: 4px 8px; font-size: 0.8rem; }
+
+.tier-badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 0.8rem; font-weight: 700; }
+.tier-badge.safe       { background: #e7f7ec; color: #0b5d1e; }
+.tier-badge.suspicious { background: #fff6e0; color: #7a5200; }
+.tier-badge.dangerous  { background: #ffeceb; color: #7a0711; }
+
+.findings { max-height: 220px; overflow: auto; border: 1px solid #eee; border-radius: 6px; padding: 8px; font-size: 12px; }
+.findings .item { padding: 3px 0; border-bottom: 1px dashed #eee; }
+.findings .item:last-child { border-bottom: 0; }
+
+textarea { border: 1px solid #ccc; border-radius: 6px; padding: 6px; font-family: inherit; font-size: 12px; }
+
+/* Options */
+.options { max-width: 720px; margin: 16px auto; padding: 16px; }
+.options h2 { margin-top: 0; }
+.options h3 { margin-top: 22px; border-bottom: 1px solid #eee; padding-bottom: 4px; }
+label { display: block; margin: 10px 0; }
+input[type="text"], input[type="number"], input[type="password"], select { width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 6px; }
+.tabs { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
+.tabs button { padding: 6px 12px; border: 1px solid #ddd; background: #fff; border-radius: 6px; cursor: pointer; }
+.tabs button.active { background: #111; color: #fff; border-color: #111; }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+.danger { color: #b00020; }
+code { background: #f4f4f4; padding: 1px 4px; border-radius: 4px; }
+body.dark code { background: #2a2a2a; }

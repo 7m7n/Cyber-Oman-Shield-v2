@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "algorithm": "logistic_regression",
+  "features": [
+    "has_urgency","has_password_word","has_money_word","has_brand_mismatch",
+    "has_ip_url","has_punycode","has_suspicious_tld","has_shortener",
+    "link_count_log","body_length_log","uppercase_ratio","exclamation_ratio",
+    "has_attachment_risky","has_macro_ext","has_double_ext","has_form_tag",
+    "has_hidden_text","has_qr_image","display_name_spoof","reply_to_mismatch",
+    "first_seen_sender","thread_history_flag","arabic_urgency","arabic_keyword",
+    "html_script_tag","html_iframe","has_base64_image","many_links_ratio",
+    "url_entropy_avg","url_brand_path"
+  ],
+  "bias": -2.4,
+  "weights": [
+    2.1, 1.8, 1.6, 2.4,
+    3.0, 2.6, 1.9, 1.2,
+    -0.3, -0.1, 1.4, 1.1,
+    2.7, 2.3, 3.2, 2.2,
+    2.4, 1.8, 2.5, 2.6,
+    0.9, 1.5, 2.2, 1.7,
+    1.9, 1.8, 1.6, 1.0,
+    1.3, 2.0
+  ]
+}

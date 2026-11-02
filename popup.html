@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Cyber OMAN Shield 2040 v2</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+  <div class="popup">
+    <div class="row"><strong id="title">Cyber OMAN Shield 2040 v2</strong></div>
+    <div class="row"><strong id="subject">(Open a message)</strong></div>
+    <div class="row" id="scoreRow">
+      <span id="tier" class="tier-badge safe">Safe</span>
+      <span class="small">Score: <strong id="score">—</strong>/100</span>
+      <span id="mlBadge" class="small"></span>
+    </div>
+    <div class="row small" id="sender"></div>
+    <div class="row small" id="explain"></div>
+    <div class="row"><div id="findings" class="findings"></div></div>
+    <div class="row" id="threadRow" style="display:none;">
+      <button id="threadToggle" class="button small">Thread timeline</button>
+      <div id="threadTimeline" class="findings" style="display:none; margin-top:6px;"></div>
+    </div>
+    <div class="row">
+      <button id="report" class="button">Report</button>
+      <button id="sandbox" class="button">Sandbox</button>
+      <button id="trust" class="button">Trust</button>
+      <button id="demo" class="button">Demo</button>
+      <button id="settings" class="button">Settings</button>
+      <button id="dashboard" class="button">Dashboard</button>
+    </div>
+    <div class="row small">
+      <button id="checkHeaders" class="button small">Paste headers</button>
+      <a href="https://support.google.com/mail/answer/8253" target="_blank">Report in provider</a>
+    </div>
+    <textarea id="headersBox" placeholder="Paste raw headers here (Show original → copy)" style="display:none;width:100%;height:80px;"></textarea>
+    <div id="headerResult" class="small"></div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

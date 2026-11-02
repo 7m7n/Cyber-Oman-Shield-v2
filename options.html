@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Cyber OMAN Shield 2040 v2 — Settings</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+  <div class="options">
+    <h2>Cyber OMAN Shield 2040 v2 — Settings</h2>
+
+    <div class="tabs">
+      <button data-tab="appearance" class="active">Appearance</button>
+      <button data-tab="detection">Detection</button>
+      <button data-tab="rules">Rules</button>
+      <button data-tab="keys">API Keys</button>
+      <button data-tab="advanced">Advanced</button>
+      <button data-tab="about">About</button>
+    </div>
+
+    <section class="tab-panel active" data-panel="appearance">
+      <label>Language
+        <select id="language"><option value="en">English</option><option value="ar">العربية</option></select>
+      </label>
+      <label>Font size
+        <select id="fontSize"><option value="normal">Normal</option><option value="large">Large</option></select>
+      </label>
+      <label><input type="checkbox" id="boldText" /> Bold text in banner</label>
+      <label>Theme
+        <select id="theme"><option value="light">Light</option><option value="dark">Dark</option></select>
+      </label>
+      <label><input type="checkbox" id="debug" /> Debug logging</label>
+    </section>
+
+    <section class="tab-panel" data-panel="detection">
+      <label><input type="checkbox" id="enableExternalChecks" /> Enable external threat intelligence</label>
+      <label><input type="checkbox" id="enableVirusTotal" /> VirusTotal</label>
+      <label><input type="checkbox" id="enablePhishTank" /> PhishTank</label>
+      <label><input type="checkbox" id="enableSafeBrowsing" /> Google Safe Browsing</label>
+      <label><input type="checkbox" id="enableUrlhaus" /> URLhaus (abuse.ch)</label>
+      <label><input type="checkbox" id="enableHIBP" /> Have I Been Pwned (checks sender)</label>
+      <hr/>
+      <label><input type="checkbox" id="enableML" /> ML fusion score (logistic regression)</label>
+      <label><input type="checkbox" id="enableQR" /> QR-code detection</label>
+      <label><input type="checkbox" id="enableHover" /> Hover link preview</label>
+      <label><input type="checkbox" id="enableVisual" /> Visual similarity check</label>
+      <label><input type="checkbox" id="enableSound" /> Sound + desktop notification on Dangerous</label>
+    </section>
+
+    <section class="tab-panel" data-panel="rules">
+      <p class="small">Override rules locally on top of the shipped <code>rules.json</code>. Changes take effect immediately.</p>
+      <label>Keyword (comma-separated) <input type="text" id="extraKeywords" placeholder="e.g. oman customs, ministry of finance" /></label>
+      <label>Brands (comma-separated) <input type="text" id="extraBrands" /></label>
+      <label>Suspicious TLDs (comma-separated) <input type="text" id="extraTlds" /></label>
+      <div style="margin-top:12px;">
+        <button id="rulesSave" class="button">Apply rules</button>
+        <button id="rulesReset" class="button danger">Reset to default</button>
+      </div>
+      <p class="small" id="rulesStatus"></p>
+    </section>
+
+    <section class="tab-panel" data-panel="keys">
+      <p class="small">Keys are stored in <strong>local</strong> storage. Optionally encrypt them with a password.</p>
+      <label>VirusTotal API key <input type="text" id="vtApiKey" placeholder="optional" /></label>
+      <label>PhishTank app key <input type="text" id="phishTankAppKey" placeholder="optional" /></label>
+      <label>Google Safe Browsing API key <input type="text" id="safeBrowsingApiKey" placeholder="optional" /></label>
+      <label>HIBP API key <input type="text" id="hibpApiKey" placeholder="optional" /></label>
+      <div style="margin-top:12px;">
+        <button id="testKeys" class="button">Test providers</button>
+        <span id="testStatus" class="small"></span>
+      </div>
+      <hr/>
+      <h3>Encrypt keys</h3>
+      <label>Password <input type="password" id="encPassword" placeholder="enter to set/change" /></label>
+      <div>
+        <button id="encSet" class="button">Encrypt now</button>
+        <button id="encClear" class="button danger">Remove encryption</button>
+        <span id="encStatus" class="small"></span>
+      </div>
+    </section>
+
+    <section class="tab-panel" data-panel="advanced">
+      <label>Cache TTL (hours) <input type="number" id="cacheTtlHours" min="0" max="168" /></label>
+      <label>Rate limit (requests / minute) <input type="number" id="rateLimitPerMin" min="1" max="60" /></label>
+      <label><input type="checkbox" id="autoUpdateRules" /> Auto-update rules from GitHub</label>
+      <div style="margin-top:12px;">
+        <button id="clearHistory" class="button danger">Clear history</button>
+        <button id="clearCache" class="button">Clear cache</button>
+        <button id="clearWhitelist" class="button danger">Clear trusted senders</button>
+      </div>
+      <div style="margin-top:12px;">
+        <button id="exportAudit" class="button">Self-audit JSON export</button>
+        <button id="exportCsv" class="button">Export history CSV</button>
+      </div>
+    </section>
+
+    <section class="tab-panel" data-panel="about">
+      <p><strong>Version:</strong> <span id="aboutVersion">2.0.0</span></p>
+      <p><strong>Rules version:</strong> <span id="aboutRules">—</span></p>
+      <p><strong>ML model version:</strong> <span id="aboutML">—</span></p>
+      <p><strong>History entries:</strong> <span id="aboutHistory">0</span></p>
+      <p><strong>Trusted senders:</strong> <span id="aboutWhitelist">0</span></p>
+      <p class="small">Runs entirely in your browser. Only URLs (and HIBP sender email) leave the device, and only if you enable those providers.</p>
+    </section>
+
+    <div style="margin-top:16px;">
+      <button id="save" class="button">Save</button>
+      <span id="status" class="small"></span>
+    </div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Cyber OMAN Shield 2040 v2 — Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+  <header>
+    <h1>History Dashboard</h1>
+    <div class="actions">
+      <button id="exportCsv">Export CSV</button>
+      <button id="exportJson">Export JSON</button>
+      <button id="clearHistory" class="danger">Clear history</button>
+    </div>
+  </header>
+
+  <section class="stats">
+    <div class="card"><span class="num" id="statTotal">0</span><span class="label">Total scanned</span></div>
+    <div class="card"><span class="num" id="statDangerous">0</span><span class="label">Dangerous</span></div>
+    <div class="card"><span class="num" id="statSuspicious">0</span><span class="label">Suspicious</span></div>
+    <div class="card"><span class="num" id="statSafe">0</span><span class="label">Safe</span></div>
+  </section>
+
+  <section class="row">
+    <div class="panel">
+      <h2>Timeline</h2>
+      <canvas id="timeline" width="800" height="220"></canvas>
+    </div>
+    <div class="panel">
+      <h2>Top senders</h2>
+      <ul id="topSenders"></ul>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Recent scans</h2>
+    <table id="recent">
+      <thead><tr><th>Time</th><th>Subject</th><th>Sender</th><th>Tier</th><th>Score</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+{
+  "version": "3.0.0",
+  "tiers": { "safe": 30, "suspicious": 70 },
+  "weights": {
+    "keyword": 5,
+    "urgencyPhrase": 10,
+    "brandImpersonation": 15,
+    "ipUrl": 25,
+    "suspiciousTld": 10,
+    "punycode": 20,
+    "shortener": 8,
+    "displayNameSpoof": 20,
+    "replyToMismatch": 20,
+    "riskyAttachment": 25,
+    "doubleExtension": 30,
+    "macroAttachment": 20,
+    "externalFlag": 25,
+    "hiddenText": 15,
+    "formTag": 15,
+    "qrImage": 12,
+    "firstSeenSender": 8,
+    "threadHistory": 10,
+    "visualMatch": 18,
+    "mlScoreScale": 25,
+    "headerAuthFail": 25
+  },
+  "keywords": [
+    "urgent","verify","password","reset","account","login","invoice","gift","bitcoin",
+    "payment","bank","limited time","confirm","suspend","unusual activity","prize","lottery",
+    "wire transfer","credentials","ssn","social security","refund","tax","customs",
+    "gift card","crypto wallet","seed phrase","wallet address","2fa","two-factor",
+    "authorize","unauthorized","blocked","deactivated","reactivate","billing","receipt"
+  ],
+  "urgencyPhrases": [
+    "verify your account","account will be suspended","immediate action",
+    "within 24 hours","click here to confirm","your account has been limited",
+    "unusual sign-in","unauthorized access","final warning","last chance",
+    "act now","expires today","urgent action required","account locked"
+  ],
+  "arabic": {
+    "keywords": [
+      "عاجل","تحقق","كلمة المرور","إعادة تعيين","حساب","تسجيل الدخول","فاتورة",
+      "هدية","بيتكوين","دفع","بنك","وقت محدود","تأكيد","تعليق","نشاط غير عادي",
+      "جائزة","يانصيب","تحويل بنكي","بيانات","بطاقة ائتمان","محفظة","عملة رقمية"
+    ],
+    "urgencyPhrases": [
+      "تحقق من حسابك","سيتم تعليق حسابك","إجراء فوري","خلال 24 ساعة",
+      "اضغط هنا للتأكيد","تم تقييد حسابك","تسجيل دخول غير معتاد","وصول غير مصرح به",
+      "تحذير أخير","فرصة أخيرة","تصرف الآن","ينتهي اليوم"
+    ]
+  },
+  "brands": [
+    "google","microsoft","apple","amazon","paypal","facebook","instagram","netflix",
+    "bank","dhl","fedex","ups","linkedin","outlook","yahoo","dropbox","adobe","chase",
+    "wellsfargo","citibank","hsbc","samsung","twitter","x","tiktok","whatsapp","telegram",
+    "steam","roblox","spotify","coinbase","binance","metamask","bankofamerica","alrajhi",
+    "snb","riyadbank","muscat","bankmuscat","nbo","hsbc-oman","omanair","omantel"
+  ],
+  "suspiciousTlds": [
+    ".ru",".cn",".tk",".top",".xyz",".gq",".ml",".cf",".ga",".zip",".mov",
+    ".country",".stream",".download",".review",".work",".click",".link",".loan",
+    ".date",".men",".party",".racing",".win",".bid",".accountant",".science",
+    ".cricket",".faith",".gdn",".mom",".lol",".lat",".quest",".rest"
+  ],
+  "shorteners": [
+    "bit.ly","t.co","tinyurl.com","goo.gl","ow.ly","is.gd","buff.ly",
+    "rebrand.ly","cutt.ly","shorte.st","rb.gy","t.ly","shorturl.at","tiny.cc",
+    "soo.gd","shrtco.de","bl.ink","clck.ru","v.gd","qr.ae"
+  ],
+  "riskyExtensions": [
+    "exe","scr","js","vbs","bat","cmd","com","pif","jar","hta","lnk","iso","img",
+    "dll","ps1","msi","vbe","wsf","wsh","reg","cpl","inf","gadget","application","appref-ms"
+  ],
+  "macroExtensions": ["docm","xlsm","pptm","dotm","xltm","xlam","ppam","sldm"],
+  "doubleExtensionPattern": "\\.(pdf|doc|docx|xls|xlsx|jpg|jpeg|png|txt|zip|rar|7z|mp3|mp4)\\.(exe|scr|js|vbs|bat|cmd|com|pif|jar|hta|lnk|iso|msi)$",
+  "reportUrls": {
+    "phishtank": "https://www.phishtank.com/submit_phish.php",
+    "googleSafeBrowsing": "https://safebrowsing.google.com/safebrowsing/report_phish/",
+    "googleSupport": "https://support.google.com/mail/answer/8253",
+    "omanCert": "https://www.cert.gov.om/",
+    "microsoft": "https://www.microsoft.com/en-us/wdsi/support/report-unsafe-site-guest",
+    "apwg": "https://apwg.org/reportphishing/"
+  },
+  "brandVisualHashes": {
+    "paypal":  "f1e2d3c4b5a69788",
+    "google":  "0011223344556677",
+    "microsoft":"ffeeddccbbaa9988",
+    "amazon":  "1234567890abcdef",
+    "apple":   "abcdef0123456789",
+    "facebook":"deadbeefcafebabe",
+    "netflix": "0123456789abcdef",
+    "bankmuscat":"cafebabe00112233"
+  },
+  "ruleChangelog": [
+    { "version": "3.0.0", "date": "2026-01-01", "notes": "Added Arabic keywords, more brands, extended TLDs, ML fusion, header auth, QR, visual similarity." },
+    { "version": "2.0.0", "date": "2025-12-01", "notes": "Initial v2 with tiers, findings, external providers." }
+  ]
+}

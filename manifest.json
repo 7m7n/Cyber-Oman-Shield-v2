@@ -1,0 +1,85 @@
+{
+  "manifest_version": 3,
+  "name": "Cyber OMAN Shield 2040 v2",
+  "version": "3.0.0",
+  "description": "Real-time phishing detection for Gmail, Outlook, and Yahoo Mail. Local ML + heuristics + optional threat intelligence.",
+  "minimum_chrome_version": "102",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "notifications",
+    "downloads",
+    "tabs",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://mail.google.com/*",
+    "https://outlook.live.com/*",
+    "https://outlook.office.com/*",
+    "https://mail.yahoo.com/*",
+    "https://www.virustotal.com/*",
+    "https://checkurl.phishtank.com/*",
+    "https://safebrowsing.googleapis.com/*",
+    "https://urlhaus-api.abuse.ch/*",
+    "https://haveibeenpwned.com/*",
+    "https://raw.githubusercontent.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://mail.google.com/*",
+        "https://outlook.live.com/*",
+        "https://outlook.office.com/*",
+        "https://mail.yahoo.com/*"
+      ],
+      "js": [
+        "lib/logger.js",
+        "lib/storage.js",
+        "lib/cache.js",
+        "lib/i18n.js",
+        "lib/crypto.js",
+        "lib/ml.js",
+        "lib/url-analysis.js",
+        "lib/attachments.js",
+        "lib/qr.js",
+        "lib/html-forensics.js",
+        "lib/header-parser.js",
+        "lib/sender-reputation.js",
+        "lib/thread-analysis.js",
+        "lib/visual-similarity.js",
+        "lib/notifications.js",
+        "lib/site-gmail.js",
+        "lib/site-outlook.js",
+        "lib/site-yahoo.js",
+        "lib/scoring.js",
+        "content.js"
+      ],
+      "css": ["styles.css"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "background": { "service_worker": "background.js" },
+  "action": {
+    "default_title": "Cyber OMAN Shield 2040 v2",
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html",
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "rules.json",
+        "ml/model.json",
+        "lib/locale/en.json",
+        "lib/locale/ar.json",
+        "dashboard/dashboard.html"
+      ],
+      "matches": [
+        "https://mail.google.com/*",
+        "https://outlook.live.com/*",
+        "https://outlook.office.com/*",
+        "https://mail.yahoo.com/*"
+      ]
+    }
+  ]
+}
